@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
+const commitMsgFile = process.argv[2];
+
+const commitMessage = fs.readFileSync(commitMsgFile, 'utf8');
+
+const firstLine = commitMessage.split(/\r?\n/)[0].trim();
+
+// Conventional Commits: 
+// type(scope optional)! optional: description
+const conventionalCommitRegex = /^[a-z]+(?:\([a-z0-9._/-]+\))?!?: .+/;
+
+// Ticketnummer, z. B. PROJ-123
+const ticketRegex = /\b[A-Z][A-Z0-9]*-\d+\b/;
+
+if (!conventionalCommitRegex.test(firstLine)) {
+  console.error('Ungültige Commit Message.');
+  console.error('Die Message muss dem Conventional-Commits-Format entsprechen.');
+  console.error('Beispiel: feat: PROJ-123 add login page');
+  process.exit(1);
+}
+if (!ticketRegex.test(firstLine)) {
+  console.error('Ungültige Commit Message.');
+  console.error('Die Message muss eine gültige Ticketnummer enthalten.');
+  console.error('Beispiel: feat: PROJ-123 add login page');
+  process.exit(1);
+}
+console.log('Commit Message ist gültig.');
+process.exit(0);
