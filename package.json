@@ -1,0 +1,21 @@
+{
+  "name": "m324-devops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup:git-hooks": "git config core.hooksPath .git-hooks",
+    "postinstall": "npm run setup:git-hooks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leparencival/M324-DevOps.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Leparencival/M324-DevOps/issues"
+  },
+  "homepage": "https://github.com/Leparencival/M324-DevOps#readme"
+}
